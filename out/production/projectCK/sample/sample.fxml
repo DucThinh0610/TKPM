@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.media.MediaView?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="540" prefWidth="960">
+         <children>
+            <MediaView id="media_view" fitHeight="540" fitWidth="960" />
+         </children></Pane>
+      <TabPane layoutX="974.0" layoutY="14.0" prefHeight="584.0" prefWidth="417.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="139.0" tabMinWidth="120.0">
+        <tabs>
+          <Tab text="Phiên âm">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="417.0" />
+            </content>
+          </Tab>
+          <Tab text="Lịch sử">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Video">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="417.0">
+                     <children>
+                        <ListView id="lv_video" layoutX="1.0" prefHeight="556.0" prefWidth="417.0" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</Pane>
