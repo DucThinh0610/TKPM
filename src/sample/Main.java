@@ -24,7 +24,11 @@ import javafx.application.Platform;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.collections.ObservableList;
+
 import java.awt.*;
+import java.io.*;
+import java.util.Scanner;
+
 import javafx.collections.FXCollections;
 
 public class Main extends Application {
@@ -40,6 +44,7 @@ public class Main extends Application {
     private boolean repeat = false;
     private HBox mediaBar;
     private ListView<String> list_video;
+    private ListView<String> list_subtitle;
     private Media m;
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -48,7 +53,7 @@ public class Main extends Application {
         mediaView = (MediaView) root.lookup("#media_view");
         mediaBar =(HBox) root.lookup("#media_bar");
         list_video = (ListView<String>)root.lookup("#lv_video");
-
+        list_subtitle =(ListView<String>)root.lookup("#list_subtitle");
         //Hiển thị danh sách video
         ObservableList<String> items =FXCollections.observableArrayList (
                 "video1", "video2", "video3", "video4");
@@ -62,16 +67,20 @@ public class Main extends Application {
                 repeat = false;
                 mp.stop();
                 btnPlay.setText(">");
-                m = new Media("file:///F:/"+ newValue +".mp4");
+                list_subtitle.getItems().clear();
+                //m = new Media("file:///F:/"+ newValue +".mp4");
+                m = new Media(getClass().getResource("/data/videos/"+ newValue +".mp4").toExternalForm());
+
                 mp = new MediaPlayer(m);
 
                 mediaView.setMediaPlayer(mp);
                 mediaView.setPreserveRatio(true);
                 replay();
+                readFile(newValue);
             }
         });
         //Chạy Video
-        m = new Media("file:///F:/video1.mp4");
+        m = new Media(getClass().getResource("/data/videos/video1.mp4").toExternalForm());
         mp = new MediaPlayer(m);
 
         mediaView.setMediaPlayer(mp);
@@ -154,10 +163,25 @@ public class Main extends Application {
             }
         });
         replay();
+        readFile("video1");
         primaryStage.setTitle("Học tiếng anh");
         primaryStage.setScene(new Scene(root, 1400, 700));
         primaryStage.show();
     }
+    public void readFile(String nameFile){
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
+
+            String line;
+            while ((line = reader.readLine()) != null){
+                list_subtitle.getItems().add(line);
+                //System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void replay(){
         mp.currentTimeProperty().addListener(new InvalidationListener()
         {

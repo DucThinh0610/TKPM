@@ -18,7 +18,10 @@
         <tabs>
           <Tab text="Phiên âm">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="463.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="463.0">
+                     <children>
+                        <ListView id="list_subtitle" layoutX="-1.0" layoutY="-1.0" prefHeight="555.0" prefWidth="515.0" />
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Lịch sử">
