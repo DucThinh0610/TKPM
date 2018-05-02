@@ -61,11 +61,13 @@ public class Main extends Application {
                 atEndOfMedia = false;
                 repeat = false;
                 mp.stop();
+                btnPlay.setText(">");
                 m = new Media("file:///F:/"+ newValue +".mp4");
                 mp = new MediaPlayer(m);
 
                 mediaView.setMediaPlayer(mp);
                 mediaView.setPreserveRatio(true);
+                replay();
             }
         });
         //Chạy Video
@@ -151,7 +153,12 @@ public class Main extends Application {
                 }
             }
         });
-
+        replay();
+        primaryStage.setTitle("Học tiếng anh");
+        primaryStage.setScene(new Scene(root, 1400, 700));
+        primaryStage.show();
+    }
+    public void replay(){
         mp.currentTimeProperty().addListener(new InvalidationListener()
         {
             public void invalidated(Observable ov) {
@@ -192,13 +199,7 @@ public class Main extends Application {
                 }
             }
         });
-
-
-        primaryStage.setTitle("Học tiếng anh");
-        primaryStage.setScene(new Scene(root, 1400, 700));
-        primaryStage.show();
     }
-
     protected void updateValues() {
         if (playTime != null && timeSlider != null && volumeSlider != null) {
             Platform.runLater(new Runnable() {
