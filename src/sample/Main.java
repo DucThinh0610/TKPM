@@ -27,7 +27,9 @@ import javafx.collections.ObservableList;
 
 import java.awt.*;
 import java.io.*;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javafx.collections.FXCollections;
 
@@ -45,6 +47,7 @@ public class Main extends Application {
     private HBox mediaBar;
     private ListView<String> list_video;
     private ListView<String> list_subtitle;
+
     private Media m;
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -77,6 +80,26 @@ public class Main extends Application {
                 mediaView.setPreserveRatio(true);
                 replay();
                 readFile(newValue);
+            }
+        });
+        list_subtitle.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println("chọn item "+ newValue.substring(0,5));
+
+                SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
+                sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+                Date date = null;
+                try {
+                    date = sdf.parse(newValue.substring(0,5));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("in milliseconds: " +  Duration.millis(date.getTime()));
+
+                mp.seek(Duration.millis(date.getTime()));
+
             }
         });
         //Chạy Video
@@ -164,17 +187,19 @@ public class Main extends Application {
         });
         replay();
         readFile("video1");
+
         primaryStage.setTitle("Học tiếng anh");
         primaryStage.setScene(new Scene(root, 1400, 700));
         primaryStage.show();
     }
     public void readFile(String nameFile){
-
+       // array_subtitle= new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
 
             String line;
             while ((line = reader.readLine()) != null){
                 list_subtitle.getItems().add(line);
+                //array_subtitle.add(line);
                 //System.out.println(line);
             }
         } catch (IOException e) {
@@ -230,6 +255,8 @@ public class Main extends Application {
                 public void run() {
                     Duration currentTime = mp.getCurrentTime();
                     playTime.setText(formatTime(currentTime, duration));
+                    System.out.println(currentTime);
+                    System.out.println(duration);
                     timeSlider.setDisable(duration.isUnknown());
                     if (!timeSlider.isDisabled()
                             && duration.greaterThan(Duration.ZERO)
