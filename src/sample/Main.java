@@ -14,6 +14,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
@@ -38,7 +41,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 
-public class Main extends Application implements XCell.OnClickSaveString {
+public class Main extends Application implements XCell.OnClickSaveString, Tag.OnClickItemWord {
     private MediaPlayer mp;
     private MediaView mediaView;
     private boolean stopRequested = false;
@@ -57,20 +60,40 @@ public class Main extends Application implements XCell.OnClickSaveString {
     private ListView<String> list_subtitle;
     private String name;
     private Media m;
+    private List<Word> mListWordSelected = new ArrayList<>();
+    private ImageView imvSaveWord;
+    private String stringSelected;
+
     @Override
-    public void start(final Stage primaryStage) throws Exception{
+    public void start(final Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         mediaView = (MediaView) root.lookup("#media_view");
-        mediaBar =(HBox) root.lookup("#media_bar");
-        btnAddVideo =(Button)root.lookup("#btn_addVideo");
-        btnAddSubtitle =(Button)root.lookup("#btn_addSubtitle");
-        flowPaneWord= (FlowPane) root.lookup("#flow_panel");
+        mediaBar = (HBox) root.lookup("#media_bar");
+        btnAddVideo = (Button) root.lookup("#btn_addVideo");
+        btnAddSubtitle = (Button) root.lookup("#btn_addSubtitle");
+        flowPaneWord = (FlowPane) root.lookup("#flow_panel");
         flowPaneWord.setHgap(10);
         flowPaneWord.setVgap(15);
-        list_video = (ListView<String>)root.lookup("#lv_video");
-        list_subtitle =(ListView<String>)root.lookup("#list_subtitle");
+        list_video = (ListView<String>) root.lookup("#lv_video");
+        list_subtitle = (ListView<String>) root.lookup("#list_subtitle");
+        imvSaveWord = (ImageView) root.lookup("#imv_save_word");
+        imvSaveWord.setVisible(false);
+        javafx.scene.image.Image image = new Image(getClass().getResourceAsStream("star.png"));
+        imvSaveWord.setImage(image);
         //Hiển thị danh sách video
+        imvSaveWord.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (stringSelected == null)
+                    return;
+                if (mListWordSelected.size() == 0) {
+                    System.out.println("Luu nguyen 1 cau: " + stringSelected);
+                } else {
+                    System.out.println("Luu cac tu trong cau: " + mListWordSelected.toString());
+                }
+            }
+        });
         btnAddVideo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -82,20 +105,20 @@ public class Main extends Application implements XCell.OnClickSaveString {
                 File selectedDirectory = fileChooser.showOpenDialog(primaryStage);
                 if (selectedDirectory != null) {
 
-                    System.out.println(  selectedDirectory.getAbsolutePath());
+                    System.out.println(selectedDirectory.getAbsolutePath());
                     CopyOption[] options = new CopyOption[]{
                             StandardCopyOption.REPLACE_EXISTING,
                             StandardCopyOption.COPY_ATTRIBUTES
                     };
                     System.out.println(selectedDirectory.getName());
-                    name =selectedDirectory.getName();
-                  //  Path to = Paths.get(getClass().getResource("/data/videos").toExternalForm(),"video5.mp4");
-                    Path to = Paths.get(getClass().getResource("/data/videos").toString().substring(6),selectedDirectory.getName());
-                    System.out.println("luu video "+ to);
+                    name = selectedDirectory.getName();
+                    //  Path to = Paths.get(getClass().getResource("/data/videos").toExternalForm(),"video5.mp4");
+                    Path to = Paths.get(getClass().getResource("/data/videos").toString().substring(6), selectedDirectory.getName());
+                    System.out.println("luu video " + to);
 
 
                     try {
-                        Files.copy(selectedDirectory.toPath(),to,options);
+                        Files.copy(selectedDirectory.toPath(), to, options);
                         list_video.getItems().add(name);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -118,17 +141,17 @@ public class Main extends Application implements XCell.OnClickSaveString {
                 File selectedDirectory = fileChooser.showOpenDialog(primaryStage);
                 if (selectedDirectory != null) {
 
-                    System.out.println(  selectedDirectory.getAbsolutePath());
+                    System.out.println(selectedDirectory.getAbsolutePath());
                     CopyOption[] options = new CopyOption[]{
                             StandardCopyOption.REPLACE_EXISTING,
                             StandardCopyOption.COPY_ATTRIBUTES
                     };
                     System.out.println(selectedDirectory.getName());
                     //  Path to = Paths.get(getClass().getResource("/data/videos").toExternalForm(),"video5.mp4");
-                    Path to = Paths.get(getClass().getResource("/data/subtitle").toString().substring(6),name +".txt");
+                    Path to = Paths.get(getClass().getResource("/data/subtitle").toString().substring(6), name + ".txt");
                     System.out.println(to);
                     try {
-                        Files.copy(selectedDirectory.toPath(),to,options);
+                        Files.copy(selectedDirectory.toPath(), to, options);
                         readFile(name);
                         System.out.println(name);
                         //readFile(newValue.substring(0,newValue.length()-4));
@@ -142,63 +165,66 @@ public class Main extends Application implements XCell.OnClickSaveString {
         list_video.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                System.out.println("chọn item"+ newValue);
+                System.out.println("chọn item" + newValue);
                 stopRequested = false;
                 atEndOfMedia = false;
                 repeat = false;
                 mp.stop();
                 btnPlay.setText(">");
                 //m = new Media("file:///F:/"+ newValue +".mp4");
-                m = new Media(getClass().getResource("/data/videos/"+ newValue).toExternalForm());
-                System.out.println("lấy video "+ getClass().getResource("/data/videos/"+ newValue ).getPath());
+                m = new Media(getClass().getResource("/data/videos/" + newValue).toExternalForm());
+                System.out.println("lấy video " + getClass().getResource("/data/videos/" + newValue).getPath());
                 mp = new MediaPlayer(m);
 
                 mediaView.setMediaPlayer(mp);
                 mediaView.setPreserveRatio(true);
                 replay();
-                name=newValue.substring(0,newValue.length()-4);
+                name = newValue.substring(0, newValue.length() - 4);
                 readFile(name);
             }
         });
         list_subtitle.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                System.out.println("chọn item "+ newValue.substring(0,5));
+                System.out.println("chọn item " + newValue.substring(0, 5));
 
                 SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
                 sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
+                stringSelected = newValue;
                 Date date = null;
                 try {
-                    date = sdf.parse(newValue.substring(0,5));
+                    date = sdf.parse(newValue.substring(0, 5));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 mp.seek(Duration.millis(date.getTime()));
                 String s = newValue.substring(6, newValue.length() - 1);
                 String[] arr = s.split(" ");
+                mListWordSelected.clear();
                 flowPaneWord.getChildren().clear();
-                for (String data : arr) {
+                imvSaveWord.setVisible(true);
+                for (int i = 0; i < arr.length; i++) {
+                    String data = arr[i];
                     System.out.println(data);
-                    flowPaneWord.getChildren().add(new Tag(data));
+                    flowPaneWord.getChildren().add(new Tag(new Word(data, i), Main.this));
                 }
-                flowPaneWord.setPadding(new Insets(10,10,10,10));
+                flowPaneWord.setPadding(new Insets(10, 10, 10, 10));
             }
         });
         //Chạy Video
         getFileName(getClass().getResource("/data/videos/").getPath());
         System.out.println(list_video.getItems().get(0));
 
-        name = list_video.getItems().get(0).substring(0,list_video.getItems().get(0).length() - 4);
+        name = list_video.getItems().get(0).substring(0, list_video.getItems().get(0).length() - 4);
         System.out.println(name);
         readFile(name);
-        m = new Media(getClass().getResource("/data/videos/"+ name +".mp4").toExternalForm());
+        m = new Media(getClass().getResource("/data/videos/" + name + ".mp4").toExternalForm());
         mp = new MediaPlayer(m);
         mediaView.setMediaPlayer(mp);
         mediaView.setPreserveRatio(true);
 
         // Add button play
-        btnPlay  = new Button(">");
+        btnPlay = new Button(">");
         mediaBar.getChildren().add(btnPlay);
         // Add spacer
         Label spacer = new Label("   ");
@@ -210,7 +236,7 @@ public class Main extends Application implements XCell.OnClickSaveString {
 
         // Add time slider
         timeSlider = new Slider();
-        HBox.setHgrow(timeSlider,Priority.ALWAYS);
+        HBox.setHgrow(timeSlider, Priority.ALWAYS);
         timeSlider.setMinWidth(50);
         timeSlider.setMaxWidth(Double.MAX_VALUE);
         timeSlider.valueProperty().addListener(new InvalidationListener() {
@@ -253,16 +279,14 @@ public class Main extends Application implements XCell.OnClickSaveString {
                 MediaPlayer.Status status = mp.getStatus();
 
 
-                if (status == MediaPlayer.Status.UNKNOWN  || status == MediaPlayer.Status.HALTED)
-                {
+                if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
                     // don't do anything in these states
                     return;
                 }
 
-                if ( status == MediaPlayer.Status.PAUSED
+                if (status == MediaPlayer.Status.PAUSED
                         || status == MediaPlayer.Status.READY
-                        || status == MediaPlayer.Status.STOPPED)
-                {
+                        || status == MediaPlayer.Status.STOPPED) {
                     // rewind the movie if we're sitting at the end
                     if (atEndOfMedia) {
                         mp.seek(mp.getStartTime());
@@ -279,27 +303,29 @@ public class Main extends Application implements XCell.OnClickSaveString {
         primaryStage.setScene(new Scene(root, 1400, 700));
         primaryStage.show();
     }
-    public void getFileName(String directoryName){
+
+    public void getFileName(String directoryName) {
         File directory = new File(directoryName);
         //get all the files from a directory
         File[] fList = directory.listFiles();
-        if(fList != null){
-            for (File file : fList){
-                if (file.isFile()){
+        if (fList != null) {
+            for (File file : fList) {
+                if (file.isFile()) {
                     list_video.getItems().add(file.getName());
                 }
             }
         }
     }
-    public void readFile(String nameFile){
-       // array_subtitle= new ArrayList<>();
+
+    public void readFile(String nameFile) {
+        // array_subtitle= new ArrayList<>();
         list_subtitle.getItems().clear();
-        System.out.println(nameFile+".txt");
-        System.out.println("lấy subtitle "+ getClass().getResource("/data/subtitle/" ).getPath());
-       // try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(getClass().getResource("/data/subtitle/" +nameFile+".txt" ).getPath())))) {
+        System.out.println(nameFile + ".txt");
+        System.out.println("lấy subtitle " + getClass().getResource("/data/subtitle/").getPath());
+        // try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(getClass().getResource("/data/subtitle/" + nameFile + ".txt").getPath())))) {
             String line;
-            while ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 list_subtitle.getItems().add(line);
                 //array_subtitle.add(line);
                 //System.out.println(line);
@@ -307,7 +333,7 @@ public class Main extends Application implements XCell.OnClickSaveString {
         } catch (IOException e) {
             System.out.println("Không tìm thấy file subtitle");
             list_subtitle.getItems().add("Không tìm thấy file subtitle");
-           // e.printStackTrace();
+            // e.printStackTrace();
         }
         list_subtitle.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
@@ -317,9 +343,8 @@ public class Main extends Application implements XCell.OnClickSaveString {
         });
     }
 
-    public void replay(){
-        mp.currentTimeProperty().addListener(new InvalidationListener()
-        {
+    public void replay() {
+        mp.currentTimeProperty().addListener(new InvalidationListener() {
             public void invalidated(Observable ov) {
                 updateValues();
             }
@@ -359,6 +384,7 @@ public class Main extends Application implements XCell.OnClickSaveString {
             }
         });
     }
+
     protected void updateValues() {
         if (playTime != null && timeSlider != null && volumeSlider != null) {
             Platform.runLater(new Runnable() {
@@ -373,15 +399,16 @@ public class Main extends Application implements XCell.OnClickSaveString {
                                 * 100.0);
                     }
                     if (!volumeSlider.isValueChanging()) {
-                        volumeSlider.setValue((int)Math.round(mp.getVolume()
+                        volumeSlider.setValue((int) Math.round(mp.getVolume()
                                 * 100));
                     }
                 }
             });
         }
     }
+
     private static String formatTime(Duration elapsed, Duration duration) {
-        int intElapsed = (int)Math.floor(elapsed.toSeconds());
+        int intElapsed = (int) Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
         if (elapsedHours > 0) {
             intElapsed -= elapsedHours * 60 * 60;
@@ -391,7 +418,7 @@ public class Main extends Application implements XCell.OnClickSaveString {
                 - elapsedMinutes * 60;
 
         if (duration.greaterThan(Duration.ZERO)) {
-            int intDuration = (int)Math.floor(duration.toSeconds());
+            int intDuration = (int) Math.floor(duration.toSeconds());
             int durationHours = intDuration / (60 * 60);
             if (durationHours > 0) {
                 intDuration -= durationHours * 60 * 60;
@@ -405,7 +432,7 @@ public class Main extends Application implements XCell.OnClickSaveString {
                         durationHours, durationMinutes, durationSeconds);
             } else {
                 return String.format("%02d:%02d/%02d:%02d",
-                        elapsedMinutes, elapsedSeconds,durationMinutes,
+                        elapsedMinutes, elapsedSeconds, durationMinutes,
                         durationSeconds);
             }
         } else {
@@ -413,12 +440,11 @@ public class Main extends Application implements XCell.OnClickSaveString {
                 return String.format("%d:%02d:%02d", elapsedHours,
                         elapsedMinutes, elapsedSeconds);
             } else {
-                return String.format("%02d:%02d",elapsedMinutes,
+                return String.format("%02d:%02d", elapsedMinutes,
                         elapsedSeconds);
             }
         }
     }
-
 
 
     public static void main(String[] args) {
@@ -428,5 +454,23 @@ public class Main extends Application implements XCell.OnClickSaveString {
     @Override
     public void saveString(String s) {
         System.out.println(s);
+    }
+
+    @Override
+    public void OnClickWord(Word word) {
+        if (word.isSelected()) {
+            mListWordSelected.add(word);
+        } else {
+            mListWordSelected.remove(word);
+        }
+        Collections.sort(mListWordSelected, new Comparator<Word>() {
+            @Override
+            public int compare(Word o1, Word o2) {
+                return Integer.compare(o1.getId(), o2.getId());
+            }
+        });
+        for (Word temp : mListWordSelected) {
+            System.out.println(temp.getId() + "----" + temp.getName());
+        }
     }
 }
