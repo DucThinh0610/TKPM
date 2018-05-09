@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -20,7 +21,8 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="463.0">
                      <children>
-                        <ListView id="list_subtitle" layoutX="-1.0" layoutY="-1.0" prefHeight="555.0" prefWidth="515.0" />
+                        <ListView id="list_subtitle" layoutX="-1.0" layoutY="28.0" prefHeight="526.0" prefWidth="515.0" />
+                        <Button id="btn_addSubtitle" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Cập nhật phụ đề" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -33,7 +35,8 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="417.0">
                      <children>
-                        <ListView id="lv_video" layoutX="1.0" prefHeight="555.0" prefWidth="652.0" />
+                        <ListView id="lv_video" layoutX="1.0" layoutY="27.0" prefHeight="528.0" prefWidth="652.0" />
+                        <Button id="btn_addVideo" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Thêm video..." />
                      </children></AnchorPane>
                </content>
             </Tab>
