@@ -7,19 +7,21 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Slider;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.application.Platform;
 import javafx.scene.layout.Priority;
@@ -36,7 +38,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 
-public class Main extends Application {
+public class Main extends Application implements XCell.OnClickSaveString {
     private MediaPlayer mp;
     private MediaView mediaView;
     private boolean stopRequested = false;
@@ -50,6 +52,7 @@ public class Main extends Application {
     private Duration duration;
     private boolean repeat = false;
     private HBox mediaBar;
+    private FlowPane flowPaneWord;
     private ListView<String> list_video;
     private ListView<String> list_subtitle;
     private String name;
@@ -62,6 +65,9 @@ public class Main extends Application {
         mediaBar =(HBox) root.lookup("#media_bar");
         btnAddVideo =(Button)root.lookup("#btn_addVideo");
         btnAddSubtitle =(Button)root.lookup("#btn_addSubtitle");
+        flowPaneWord= (FlowPane) root.lookup("#flow_panel");
+        flowPaneWord.setHgap(10);
+        flowPaneWord.setVgap(15);
         list_video = (ListView<String>)root.lookup("#lv_video");
         list_subtitle =(ListView<String>)root.lookup("#list_subtitle");
         //Hiển thị danh sách video
@@ -169,6 +175,14 @@ public class Main extends Application {
                     e.printStackTrace();
                 }
                 mp.seek(Duration.millis(date.getTime()));
+                String s = newValue.substring(6, newValue.length() - 1);
+                String[] arr = s.split(" ");
+                flowPaneWord.getChildren().clear();
+                for (String data : arr) {
+                    System.out.println(data);
+                    flowPaneWord.getChildren().add(new Tag(data));
+                }
+                flowPaneWord.setPadding(new Insets(10,10,10,10));
             }
         });
         //Chạy Video
@@ -295,6 +309,12 @@ public class Main extends Application {
             list_subtitle.getItems().add("Không tìm thấy file subtitle");
            // e.printStackTrace();
         }
+        list_subtitle.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                return new XCell(Main.this);
+            }
+        });
     }
 
     public void replay(){
@@ -403,5 +423,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void saveString(String s) {
+        System.out.println(s);
     }
 }
