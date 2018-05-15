@@ -1,0 +1,14 @@
+00:08	I'm reading.
+00:12	No, I'm not.
+00:21	Are you reading an adventure?
+00:12	No, I'm not.
+00:27	Are you reading a tragedy?
+00:08	I'm reading.
+00:12	No, I'm not.
+00:19	No, I'm not.
+00:21	Are you reading an adventure?
+00:15	Are you reading a romance?
+00:10	Are you reading a comedy?
+00:10	Are you reading a comedy?
+00:12	No, I'm not.
+00:21	Are you reading an adventure?

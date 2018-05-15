@@ -58,6 +58,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
     private FlowPane flowPaneWord;
     private ListView<String> list_video;
     private ListView<String> list_subtitle;
+    private ListView<String> list_history;
     private String name;
     private Media m;
     private List<Word> mListWordSelected = new ArrayList<>();
@@ -77,6 +78,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
         flowPaneWord.setVgap(15);
         list_video = (ListView<String>) root.lookup("#lv_video");
         list_subtitle = (ListView<String>) root.lookup("#list_subtitle");
+        list_history= (ListView<String>) root.lookup("#lv_history");
         imvSaveWord = (ImageView) root.lookup("#imv_save_word");
         imvSaveWord.setVisible(false);
         javafx.scene.image.Image image = new Image(getClass().getResourceAsStream("star.png"));
@@ -451,9 +453,40 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
         launch(args);
     }
 
+    // Lưu vào lịch sử
+
     @Override
     public void saveString(String s) {
         System.out.println(s);
+            Path path =Paths.get(getClass().getResource("/data/history").toString().substring(6), name + ".txt");
+            System.out.println("path:" +path);
+            if (!Files.exists(path))
+            {
+                try {
+                  //  Files.createDirectories(path);
+                    Files.createFile(path);
+
+                }catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            try{
+                File file =new File(getClass().getResource("/data/history/"+name+".txt").getPath());
+                FileWriter fw = new FileWriter(file,true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter pw = new PrintWriter(bw);
+                pw.println(s);
+                pw.close();
+
+                System.out.println("Data successfully appended at the end of file");
+            }
+            catch (IOException e)
+            {
+                System.out.println("Exception occurred:");
+                e.printStackTrace();
+            }
     }
 
     @Override
