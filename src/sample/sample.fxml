@@ -20,7 +20,7 @@
             </children></Pane>
         <TabPane layoutX="876.0" layoutY="14.0" prefHeight="584.0" prefWidth="515.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="139.0" tabMinWidth="120.0">
             <tabs>
-                <Tab text="Phiên âm">
+                <Tab text="Phụ đề">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="463.0">
                             <children>
@@ -39,7 +39,7 @@
                      </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Video">
+                <Tab text="Video...">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="417.0">
                             <children>
