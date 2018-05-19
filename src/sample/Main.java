@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +30,7 @@ import javafx.util.Duration;
 import javafx.application.Platform;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+
 import javafx.collections.ObservableList;
 
 import java.awt.*;
@@ -49,6 +51,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
     private Button btnPlay;
     private Button btnAddVideo;
     private Button btnAddSubtitle;
+    private TextField searchField;
     private Slider timeSlider;
     private Label playTime;
     private Slider volumeSlider;
@@ -64,6 +67,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
     private List<Word> mListWordSelected = new ArrayList<>();
     private ImageView imvSaveWord;
     private String stringSelected;
+    private List<String> rootsub = new ArrayList<String>() ;
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
@@ -80,6 +84,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
         list_subtitle = (ListView<String>) root.lookup("#list_subtitle");
         list_history= (ListView<String>) root.lookup("#lv_history");
         imvSaveWord = (ImageView) root.lookup("#imv_save_word");
+        searchField = (TextField) root.lookup("#text_search");
         imvSaveWord.setVisible(false);
         javafx.scene.image.Image image = new Image(getClass().getResourceAsStream("star.png"));
         imvSaveWord.setImage(image);
@@ -183,6 +188,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
                 replay();
                 name = newValue.substring(0, newValue.length() - 4);
                 readFile(name);
+                readFile2(name);
             }
         });
         list_subtitle.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -213,6 +219,33 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
                 flowPaneWord.setPadding(new Insets(10, 10, 10, 10));
             }
         });
+        searchField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+
+
+
+                String value = newValue.toUpperCase();
+                List<String> liststring = new ArrayList<String>();
+                //  System.out.println(" OK"+list_subtitle.getItems());
+                for (Object entry : rootsub) {
+                    // System.out.println(" OK"+entry);
+                    boolean match = true;
+                    String entryText = (String)entry;
+                    if (!entryText.toUpperCase().contains(value)) {
+                        match = false;
+                        // break;
+                    }
+                    if (match) {
+                        liststring.add((String)entry);
+                    }
+                }
+                list_subtitle.setItems(FXCollections.observableArrayList(liststring));
+
+
+            }
+        });
         //Chạy Video
         getFileName(getClass().getResource("/data/videos/").getPath());
         System.out.println(list_video.getItems().get(0));
@@ -220,6 +253,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
         name = list_video.getItems().get(0).substring(0, list_video.getItems().get(0).length() - 4);
         System.out.println(name);
         readFile(name);
+        readFile2(name);
         m = new Media(getClass().getResource("/data/videos/" + name + ".mp4").toExternalForm());
         mp = new MediaPlayer(m);
         mediaView.setMediaPlayer(mp);
@@ -305,20 +339,45 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
         primaryStage.setScene(new Scene(root, 1400, 700));
         primaryStage.show();
     }
-
     public void getFileName(String directoryName) {
+        System.out.println(directoryName);
         File directory = new File(directoryName);
         //get all the files from a directory
         File[] fList = directory.listFiles();
         if (fList != null) {
             for (File file : fList) {
                 if (file.isFile()) {
+                    System.out.println("đọc tên file:" +file.getName());
                     list_video.getItems().add(file.getName());
                 }
             }
         }
     }
-
+    public void readFile2(String nameFile) {
+        // array_subtitle= new ArrayList<>();
+        list_history.getItems().clear();
+        System.out.println(nameFile + ".txt");
+        //System.out.println("lấy subtitle " + getClass().getResource("/data/subtitle/").getPath());
+        // try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(getClass().getResource("/data/history/" + nameFile + ".txt").getPath())))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                list_history.getItems().add(line);
+                //array_subtitle.add(line);
+                //System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Không tìm thấy file subtitle");
+            list_history.getItems().add("Không tìm thấy file history");
+            // e.printStackTrace();
+        }
+        list_history.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                return new XCell(Main.this);
+            }
+        });
+    }
     public void readFile(String nameFile) {
         // array_subtitle= new ArrayList<>();
         list_subtitle.getItems().clear();
@@ -331,6 +390,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
                 list_subtitle.getItems().add(line);
                 //array_subtitle.add(line);
                 //System.out.println(line);
+                rootsub.add(line);
             }
         } catch (IOException e) {
             System.out.println("Không tìm thấy file subtitle");
@@ -479,7 +539,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
                 PrintWriter pw = new PrintWriter(bw);
                 pw.println(s);
                 pw.close();
-
+                list_history.getItems().add(s);
                 System.out.println("Data successfully appended at the end of file");
             }
             catch (IOException e)

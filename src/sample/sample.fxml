@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -12,43 +13,47 @@
 <?import javafx.scene.media.MediaView?>
 
 <Pane id="play_time" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane layoutX="14.0" layoutY="14.0" prefHeight="540" prefWidth="818.0">
-         <children>
-            <MediaView id="media_view" fitHeight="540" fitWidth="818.0" />
-         </children></Pane>
-      <TabPane layoutX="876.0" layoutY="14.0" prefHeight="584.0" prefWidth="515.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="139.0" tabMinWidth="120.0">
-        <tabs>
-          <Tab text="Phiên âm">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="463.0">
+    <children>
+        <Pane layoutX="14.0" layoutY="14.0" prefHeight="540" prefWidth="818.0">
+            <children>
+                <MediaView id="media_view" fitHeight="540" fitWidth="818.0" />
+            </children></Pane>
+        <TabPane layoutX="876.0" layoutY="14.0" prefHeight="584.0" prefWidth="515.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="139.0" tabMinWidth="120.0">
+            <tabs>
+                <Tab text="Phiên âm">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="463.0">
+                            <children>
+                                <ListView id="list_subtitle" layoutY="27.0" prefHeight="403.0" prefWidth="515.0" />
+                                <Button id="btn_addSubtitle" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Cập nhật phụ đề" />
+                                <FlowPane id="flow_panel" layoutY="432.0" prefHeight="123.0" prefWidth="478.0" />
+                                <ImageView id="imv_save_word" fitHeight="25.0" fitWidth="28.0" layoutX="487.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab id="tab_history" text="Lịch sử">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView id="list_subtitle" layoutY="27.0" prefHeight="403.0" prefWidth="515.0" />
-                        <Button id="btn_addSubtitle" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Cập nhật phụ đề" />
-                        <FlowPane id="flow_panel" layoutY="432.0" prefHeight="123.0" prefWidth="478.0" />
-                        <ImageView id="imv_save_word" fitHeight="25.0" fitWidth="28.0" layoutX="487.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" />
+                        <ListView id="lv_history" layoutX="14.0" layoutY="14.0" prefHeight="459.0" prefWidth="491.0" />
                      </children></AnchorPane>
-            </content>
-          </Tab>
-          <Tab id="lv_history" text="Lịch sử">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView layoutX="3.0" layoutY="5.0" prefHeight="549.0" prefWidth="509.0" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Video">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="417.0">
-                     <children>
-                        <ListView id="lv_video" layoutX="1.0" layoutY="27.0" prefHeight="528.0" prefWidth="652.0" />
-                        <Button id="btn_addVideo" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Thêm video..." />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-      <HBox id="media_bar" layoutX="14.0" layoutY="610.0" prefHeight="62.0" prefWidth="652.0" />
-   </children>
+                    </content>
+                </Tab>
+                <Tab text="Video">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="417.0">
+                            <children>
+                                <ListView id="lv_video" layoutX="1.0" layoutY="27.0" prefHeight="528.0" prefWidth="652.0" />
+                                <Button id="btn_addVideo" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Thêm video..." />
+                            </children></AnchorPane>
+
+                    </content>
+
+                </Tab>
+
+            </tabs>
+        </TabPane>
+        <TextField id="text_search" layoutX="900.0" layoutY="530.0" prefWidth="350.0" />
+        <HBox id="media_bar" layoutX="14.0" layoutY="610.0" prefHeight="62.0" prefWidth="652.0" />
+    </children>
 </Pane>

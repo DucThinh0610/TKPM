@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projectCK/data/history/video1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/data/history/video1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projectCK/data/history/video2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/data/history/video2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$11.class" afterDir="false" />
@@ -83,8 +85,11 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1924">
-              <caret line="216" column="19" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="19" />
+            <state relative-caret-position="333">
+              <caret line="392" column="34" selection-start-line="392" selection-start-column="34" selection-end-line="392" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,13 +132,17 @@
       <find>btn_addSubtitle</find>
       <find>btnAddSubtitle</find>
       <find>name</find>
-      <find>readFile</find>
       <find>Không tìm thấy file subtitle</find>
-      <find>list_video</find>
       <find>imvSaveWord.setVisible</find>
       <find>Chưa</find>
       <find>Paths.get</find>
+      <find>getFileName</find>
+      <find>list_history</find>
       <find>list_subtitle</find>
+      <find>readFile</find>
+      <find>Tab</find>
+      <find>list_video</find>
+      <find>list_his</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -183,6 +192,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -194,25 +205,27 @@
             <path>
               <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
               <item name="TKPM" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TKPM" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TKPM" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="projectCK" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
               <item name="TKPM" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TKPM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TKPM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="videos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TKPM" type="b2602c69:ProjectViewProjectNode" />
@@ -224,8 +237,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -381,14 +392,21 @@
       <workItem from="1525907591098" duration="1198000" />
       <workItem from="1525915276275" duration="4302000" />
       <workItem from="1526341995302" duration="1018000" />
+      <workItem from="1526400097937" duration="3646000" />
+      <workItem from="1526469092751" duration="1421000" />
+      <workItem from="1526472306936" duration="3058000" />
+      <workItem from="1526529367688" duration="78000" />
+      <workItem from="1526529880560" duration="1587000" />
+      <workItem from="1526540587770" duration="699000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83464000" />
+    <option name="totallyTimeSpent" value="93953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -400,11 +418,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.0237691" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33616298" />
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3295063" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.13615733" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20121029" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -700,8 +718,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1924">
-          <caret line="216" column="19" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="19" />
+        <state relative-caret-position="333">
+          <caret line="392" column="34" selection-start-line="392" selection-start-column="34" selection-end-line="392" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
