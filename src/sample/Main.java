@@ -119,8 +119,10 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
                     };
                     System.out.println(selectedDirectory.getName());
                     name = selectedDirectory.getName();
-                    //  Path to = Paths.get(getClass().getResource("/data/videos").toExternalForm(),"video5.mp4");
-                    Path to = Paths.get(getClass().getResource("/data/videos").toString().substring(6), selectedDirectory.getName());
+                    String pathTemp=getClass().getResource("/data/videos").toString().substring(6);
+                    pathTemp=pathTemp.replaceAll("%20"," ");
+
+                    Path to = Paths.get(pathTemp, selectedDirectory.getName());
                     System.out.println("luu video " + to);
 
 
@@ -154,8 +156,10 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
                             StandardCopyOption.COPY_ATTRIBUTES
                     };
                     System.out.println(selectedDirectory.getName());
-                    //  Path to = Paths.get(getClass().getResource("/data/videos").toExternalForm(),"video5.mp4");
-                    Path to = Paths.get(getClass().getResource("/data/subtitle").toString().substring(6), name + ".txt");
+                    String pathTemp=getClass().getResource("/data/subtitle").toString().substring(6);
+                    pathTemp=pathTemp.replaceAll("%20"," ");
+
+                    Path to = Paths.get(pathTemp, name + ".txt");
                     System.out.println(to);
                     try {
                         Files.copy(selectedDirectory.toPath(), to, options);
@@ -340,7 +344,7 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
         primaryStage.show();
     }
     public void getFileName(String directoryName) {
-        System.out.println(directoryName);
+        directoryName=directoryName.replaceAll("%20"," ");
         File directory = new File(directoryName);
         //get all the files from a directory
         File[] fList = directory.listFiles();
@@ -356,10 +360,10 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
     public void readFile2(String nameFile) {
         // array_subtitle= new ArrayList<>();
         list_history.getItems().clear();
-        System.out.println(nameFile + ".txt");
-        //System.out.println("lấy subtitle " + getClass().getResource("/data/subtitle/").getPath());
-        // try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(getClass().getResource("/data/history/" + nameFile + ".txt").getPath())))) {
+        String pathTemp=getClass().getResource("/data/history/").getPath()+nameFile+".txt";
+        pathTemp=pathTemp.replaceAll("%20"," ");
+        File temp=(new File(pathTemp));
+        try (BufferedReader reader = new BufferedReader(new FileReader(temp))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 list_history.getItems().add(line);
@@ -381,10 +385,10 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
     public void readFile(String nameFile) {
         // array_subtitle= new ArrayList<>();
         list_subtitle.getItems().clear();
-        System.out.println(nameFile + ".txt");
-        System.out.println("lấy subtitle " + getClass().getResource("/data/subtitle/").getPath());
-        // try (BufferedReader reader = new BufferedReader(new FileReader(new File("./src/data/subtitle/"+ nameFile + ".txt")))) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(getClass().getResource("/data/subtitle/" + nameFile + ".txt").getPath())))) {
+        String pathTemp=getClass().getResource("/data/subtitle/").getPath()+nameFile+".txt";
+        pathTemp=pathTemp.replaceAll("%20"," ");
+        File temp=(new File(pathTemp));
+        try (BufferedReader reader = new BufferedReader(new FileReader(temp))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 list_subtitle.getItems().add(line);
@@ -518,7 +522,9 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
     @Override
     public void saveString(String s) {
         System.out.println(s);
-            Path path =Paths.get(getClass().getResource("/data/history").toString().substring(6), name + ".txt");
+            String pathTemp1=getClass().getResource("/data/history").toString().substring(6);
+            pathTemp1=pathTemp1.replaceAll("%20"," ");
+            Path path =Paths.get(pathTemp1, name + ".txt");
             System.out.println("path:" +path);
             if (!Files.exists(path))
             {
@@ -533,7 +539,10 @@ public class Main extends Application implements XCell.OnClickSaveString, Tag.On
             }
 
             try{
-                File file =new File(getClass().getResource("/data/history/"+name+".txt").getPath());
+                String pathTemp=getClass().getResource("/data/history/"+name+".txt").getPath();
+                pathTemp=pathTemp.replaceAll("%20"," ");
+                File file=(new File(pathTemp));
+
                 FileWriter fw = new FileWriter(file,true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);

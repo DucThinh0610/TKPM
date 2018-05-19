@@ -3,28 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/data/history/video1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/data/history/video1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/data/history/video2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/data/history/video2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$12.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$13.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$14.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$15.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main$18.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projectCK/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projectCK/sample/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,10 +73,48 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="392" column="34" selection-start-line="392" selection-start-column="34" selection-end-line="392" selection-end-column="34" />
+            <state relative-caret-position="-84">
+              <caret line="161" column="48" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2259#2267#0" expanded="true" />
+                <element signature="e#3386#3859#0" expanded="true" />
+                <element signature="e#3858#3859#0" expanded="true" />
+                <element signature="e#3894#5498#0" expanded="true" />
+                <element signature="e#5497#5498#0" expanded="true" />
+                <element signature="e#5536#7166#0" expanded="true" />
+                <element signature="e#7165#7166#0" expanded="true" />
+                <element signature="e#7243#8244#0" expanded="true" />
+                <element signature="e#8243#8244#0" expanded="true" />
+                <element signature="e#8324#9629#0" expanded="true" />
+                <element signature="e#9628#9629#0" expanded="true" />
+                <element signature="e#9679#10677#0" expanded="true" />
+                <element signature="e#9991#9999#0" expanded="true" />
+                <element signature="e#10676#10677#0" expanded="true" />
+                <element signature="e#11810#12149#0" expanded="true" />
+                <element signature="e#12148#12149#0" expanded="true" />
+                <element signature="e#12754#12998#0" expanded="true" />
+                <element signature="e#12997#12998#0" expanded="true" />
+                <element signature="e#13099#13988#0" expanded="true" />
+                <element signature="e#13987#13988#0" expanded="true" />
+                <element signature="e#15730#15940#0" expanded="true" />
+                <element signature="e#15939#15940#0" expanded="true" />
+                <element signature="e#17093#17303#0" expanded="true" />
+                <element signature="e#17302#17303#0" expanded="true" />
+                <element signature="e#17385#17522#0" expanded="true" />
+                <element signature="e#17521#17522#0" expanded="true" />
+                <element signature="e#17549#17819#0" expanded="true" />
+                <element signature="e#17818#17819#0" expanded="true" />
+                <element signature="e#17846#18004#0" expanded="true" />
+                <element signature="e#18003#18004#0" expanded="true" />
+                <element signature="e#18029#18189#0" expanded="true" />
+                <element signature="e#18188#18189#0" expanded="true" />
+                <element signature="e#18283#18529#0" expanded="true" />
+                <element signature="e#18528#18529#0" expanded="true" />
+                <element signature="e#18683#19497#0" expanded="true" />
+                <element signature="e#19496#19497#0" expanded="true" />
+                <element signature="e#22749#22934#0" expanded="true" />
+                <element signature="e#22933#22934#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>media_view</find>
       <find>timeSlider</find>
       <find>timeLabel</find>
       <find>spacer</find>
@@ -139,10 +164,12 @@
       <find>getFileName</find>
       <find>list_history</find>
       <find>list_subtitle</find>
-      <find>readFile</find>
       <find>Tab</find>
-      <find>list_video</find>
       <find>list_his</find>
+      <find>File</find>
+      <find>readFile</find>
+      <find>list_video</find>
+      <find>getClass().getResource</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -192,9 +219,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,6 +263,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -398,15 +425,15 @@
       <workItem from="1526529367688" duration="78000" />
       <workItem from="1526529880560" duration="1587000" />
       <workItem from="1526540587770" duration="699000" />
+      <workItem from="1526700472550" duration="1933000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93953000" />
+    <option name="totallyTimeSpent" value="95886000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -422,7 +449,7 @@
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3295063" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20121029" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.204236" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -718,10 +745,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="392" column="34" selection-start-line="392" selection-start-column="34" selection-end-line="392" selection-end-column="34" />
+        <state relative-caret-position="-84">
+          <caret line="161" column="48" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2259#2267#0" expanded="true" />
+            <element signature="e#3386#3859#0" expanded="true" />
+            <element signature="e#3858#3859#0" expanded="true" />
+            <element signature="e#3894#5498#0" expanded="true" />
+            <element signature="e#5497#5498#0" expanded="true" />
+            <element signature="e#5536#7166#0" expanded="true" />
+            <element signature="e#7165#7166#0" expanded="true" />
+            <element signature="e#7243#8244#0" expanded="true" />
+            <element signature="e#8243#8244#0" expanded="true" />
+            <element signature="e#8324#9629#0" expanded="true" />
+            <element signature="e#9628#9629#0" expanded="true" />
+            <element signature="e#9679#10677#0" expanded="true" />
+            <element signature="e#9991#9999#0" expanded="true" />
+            <element signature="e#10676#10677#0" expanded="true" />
+            <element signature="e#11810#12149#0" expanded="true" />
+            <element signature="e#12148#12149#0" expanded="true" />
+            <element signature="e#12754#12998#0" expanded="true" />
+            <element signature="e#12997#12998#0" expanded="true" />
+            <element signature="e#13099#13988#0" expanded="true" />
+            <element signature="e#13987#13988#0" expanded="true" />
+            <element signature="e#15730#15940#0" expanded="true" />
+            <element signature="e#15939#15940#0" expanded="true" />
+            <element signature="e#17093#17303#0" expanded="true" />
+            <element signature="e#17302#17303#0" expanded="true" />
+            <element signature="e#17385#17522#0" expanded="true" />
+            <element signature="e#17521#17522#0" expanded="true" />
+            <element signature="e#17549#17819#0" expanded="true" />
+            <element signature="e#17818#17819#0" expanded="true" />
+            <element signature="e#17846#18004#0" expanded="true" />
+            <element signature="e#18003#18004#0" expanded="true" />
+            <element signature="e#18029#18189#0" expanded="true" />
+            <element signature="e#18188#18189#0" expanded="true" />
+            <element signature="e#18283#18529#0" expanded="true" />
+            <element signature="e#18528#18529#0" expanded="true" />
+            <element signature="e#18683#19497#0" expanded="true" />
+            <element signature="e#19496#19497#0" expanded="true" />
+            <element signature="e#22749#22934#0" expanded="true" />
+            <element signature="e#22933#22934#0" expanded="true" />
           </folding>
         </state>
       </provider>
